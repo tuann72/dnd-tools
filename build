@@ -1,0 +1,4 @@
+#!/bin/sh
+mvn clean install
+docker build . -t dndtools:latest
+docker run -p 8080:8080 dndtools:latest
