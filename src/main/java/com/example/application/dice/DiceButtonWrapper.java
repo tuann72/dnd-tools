@@ -39,4 +39,8 @@ public class DiceButtonWrapper extends Div {
     diceCountBadge.clear();
     onClearListener.run();
   }
+
+  public int getDiceCount(){
+    return diceCountBadge.getCount();
+  }
 }

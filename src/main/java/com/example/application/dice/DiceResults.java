@@ -13,4 +13,5 @@ public class DiceResults {
   private ArrayList<ArrayList<Integer>> values;
   private int modifier;
   private int numOfAdv;
+  private int sides;
 }

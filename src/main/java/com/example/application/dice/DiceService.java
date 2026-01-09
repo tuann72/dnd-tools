@@ -18,6 +18,6 @@ public class DiceService {
       listOfValues.add(setOfRolls);
     }
 
-    return new DiceResults(listOfValues, modifier, numOfAdv);
+    return new DiceResults(listOfValues, modifier, numOfAdv, sides);
   }
 }

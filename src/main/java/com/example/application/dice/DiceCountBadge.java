@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class DiceCountBadge extends Div {
 
-  private int count = 0;
+  private int count;
 
   public DiceCountBadge(){
     getStyle().set("position", "absolute");

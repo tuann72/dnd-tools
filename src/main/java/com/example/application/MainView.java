@@ -16,7 +16,6 @@ public class MainView extends VerticalLayout {
 
     DiceMenu diceMenu = new DiceMenu(diceService);
 
-    diceMenu.setMaxWidth("200px");
     diceMenu.getStyle().set("position", "absolute");
     diceMenu.getStyle().set("bottom", "0");
     diceMenu.getStyle().set("left", "0");
