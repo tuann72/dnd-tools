@@ -10,14 +10,45 @@ public class DiceService {
   Random rand = new Random();
 
   public DiceResults roll(int count, int sides, int modifier, int numOfAdv){
-    ArrayList<ArrayList<Integer>> listOfValues = new ArrayList<>();
-
+    ArrayList<DiceRoll> listOfValues = new ArrayList<>();
     for(int i = 0; i <= numOfAdv; i++){
-      ArrayList<Integer> setOfRolls = new ArrayList<>();
-      for(int j = 0; j < count; j++) setOfRolls.add(rand.nextInt(sides) + 1 + modifier);
-      listOfValues.add(setOfRolls);
+      DiceRoll diceRoll = new DiceRoll();
+      ArrayList<Integer> temp = new ArrayList<>();
+      int value;
+      int sum = 0;
+      for(int j = 0; j < count; j++) {
+        value = rand.nextInt(sides) + 1 + modifier;
+        temp.add(value);
+        sum += value;
+      }
+      diceRoll.setValues(temp);
+      diceRoll.setSum(sum);
+
+      if(numOfAdv > 0 && !listOfValues.isEmpty()){
+        for(DiceRoll previousRoll : listOfValues){
+          if(previousRoll.isLargestRoll() && previousRoll.getSum() < diceRoll.getSum()){
+            previousRoll.setLargestRoll(false);
+            diceRoll.setLargestRoll(true);
+          }
+        }
+      }
+      else diceRoll.setLargestRoll(true);
+
+      listOfValues.add(diceRoll);
     }
 
-    return new DiceResults(listOfValues, modifier, numOfAdv, sides);
+    return new DiceResults(listOfValues, modifier, numOfAdv, sides, count);
+  }
+
+  public int SumDiceResults(ArrayList<DiceResults> aggregatedDiceResults){
+    int sum = 0;
+    for(DiceResults diceResults : aggregatedDiceResults){
+      for(DiceRoll diceRoll : diceResults.getDiceRolls()){
+        if(diceRoll.isLargestRoll()){
+          sum += diceRoll.getSum();
+        }
+      }
+    }
+    return sum;
   }
 }

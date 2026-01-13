@@ -8,7 +8,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vaadin.flow.component.notification.Notification;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class DiceMenu extends HorizontalLayout {
 
@@ -44,7 +46,7 @@ public class DiceMenu extends HorizontalLayout {
     RollDiceButton.setHeight("48px");
     RollDiceButton.addClickListener(e -> {
       aggregrateDice(diceService);
-      System.out.println(aggregatedDiceResults);
+      displayDiceResults();
     });
 
     mainDiceLayout.add(d20, d12, d10, d8, d6, d4, diceMenuToggle);
@@ -52,12 +54,19 @@ public class DiceMenu extends HorizontalLayout {
     add(mainDiceLayout, sideDiceLayout);
   }
   private void aggregrateDice(DiceService diceService){
+    aggregatedDiceResults.clear();
     if(d4.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d4.getDiceCount(), d4.getSides(), 0, 0));}
     if(d6.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d6.getDiceCount(), d6.getSides(), 0, 0));}
     if(d8.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d8.getDiceCount(), d8.getSides(), 0, 0));}
     if(d10.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d10.getDiceCount(), d10.getSides(), 0, 0));}
     if(d12.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d12.getDiceCount(), d12.getSides(), 0, 0));}
     if(d20.getDiceCount() > 0){aggregatedDiceResults.add(diceService.roll(d20.getDiceCount(), d20.getSides(), 0, 0));}
+  }
+
+  private void displayDiceResults(){
+    StringBuilder output = new StringBuilder();
+    DiceNotification diceNotification = new DiceNotification();
+    diceNotification.DiceMenuNotification(aggregatedDiceResults);
   }
 
   public void toggleVisibility(){

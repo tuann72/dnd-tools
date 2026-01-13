@@ -1,0 +1,6 @@
+services:
+  dnd-tools:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: dnd-tools
