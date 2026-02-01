@@ -8,9 +8,9 @@ public class DiceButtonWrapper extends Div {
 
   private final DiceCountBadge diceCountBadge = new DiceCountBadge();
   private boolean isVisible = false;
-  private int sides;
-  private Runnable onCountChangeListener;
-  private Runnable onClearListener;
+  private final int sides;
+  private final Runnable onCountChangeListener;
+  private final Runnable onClearListener;
 
   public DiceButtonWrapper(int sides, Runnable onCountChangeListener, Runnable onClearListener) {
     this.sides = sides;

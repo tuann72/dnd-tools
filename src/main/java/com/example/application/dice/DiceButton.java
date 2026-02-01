@@ -6,7 +6,7 @@ public class DiceButton extends Button {
 
   public DiceButton(int sides){
 
-    setText("d" + String.valueOf(sides));
+    setText("d" + sides);
     setHeight("48px");
     setWidth("48px");
   }

@@ -17,6 +17,7 @@ public class DiceCountBadge extends Div {
     getStyle().set("border-radius", "50%");
     getStyle().set("font-color", "black");
     getStyle().set("font-size", "16px");
+    getStyle().set("user-select", "none");
   }
 
   public void increment(){

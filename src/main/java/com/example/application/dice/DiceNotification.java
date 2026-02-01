@@ -1,6 +1,5 @@
 package com.example.application.dice;
 
-import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 
@@ -8,9 +7,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class DiceNotification{
-
-  private final String header = "Roll";
-
   public DiceNotification(){
   }
 

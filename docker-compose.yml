@@ -1,6 +1,6 @@
 services:
-  dnd-tools:
+  frontend:
     build: .
     ports:
       - "8080:8080"
-    container_name: dnd-tools
+    container_name: application

@@ -39,16 +39,4 @@ public class DiceService {
 
     return new DiceResults(listOfValues, modifier, numOfAdv, sides, count);
   }
-
-  public int SumDiceResults(ArrayList<DiceResults> aggregatedDiceResults){
-    int sum = 0;
-    for(DiceResults diceResults : aggregatedDiceResults){
-      for(DiceRoll diceRoll : diceResults.getDiceRolls()){
-        if(diceRoll.isLargestRoll()){
-          sum += diceRoll.getSum();
-        }
-      }
-    }
-    return sum;
-  }
 }
